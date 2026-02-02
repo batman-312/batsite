@@ -1,0 +1,320 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ERRORRRRRRRRRRRRRRRRRRRRRR!!!!!!!!!!!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #1A1A1A;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .shake {
+  animation: shake 0.4s ease-in-out infinite;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.error-text {
+  color: red;
+  font-size: 1.6rem;
+  font-weight: 600;
+  animation: flash 0.8s infinite;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+       display: flex;
+      flex-direction: column;
+       align-items: center;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #FFF;
+      margin-bottom: 5px;
+    }
+
+    .retry-btn {
+  display: inline-block;
+  padding: 12px 30px;       
+  min-width: 130px;        
+  border: 2px solid #FFF;
+  border-radius: 30px;      
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;     
+  text-align: center;
+  transition: 0.3s ease;
+  margin-top: -25px;
+}
+
+
+    .retry-btn:hover {
+      background: #000;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+.error-dialog {
+  position: fixed;
+  width: 460px;
+  background: #f3f3f3;
+  border: 1px solid #a0a0a0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  display: none;
+  z-index: 9999;
+}
+
+/* Top title bar */
+.win-header {
+  background: #ffffff;
+  border-bottom: 1px solid #c0c0c0;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Fake close button */
+.win-close {
+  font-size: 0.9rem;
+  padding: 0 6px;
+  cursor: default;
+}
+
+/* Body */
+.win-body {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  color: #000;
+  font-size: 0.85rem;
+}
+
+/* Red error icon */
+.win-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+/* Text */
+.win-text {
+  line-height: 1.4;
+}
+
+/* Footer with OK button */
+.win-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #c0c0c0;
+  background: #eaeaea;
+}
+
+/* Windows OK button */
+.dialog-btn {
+  min-width: 80px;
+  padding: 4px 18px;
+  font-size: 0.85rem;
+  border: 1px solid #7a7a7a;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.dialog-btn:hover {
+  background: #dcdcdc;
+}
+
+.error-gif {
+  width: 120px;    
+  max-width: 85%;
+  margin-bottom: 0 auto;
+    display: block;
+
+}
+
+  </style>
+</head>
+<body>
+
+<audio id="errorSound" autoplay loop>
+  <source src="error.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container">
+    <p>
+      WRONG CHOICE!!!!!😡
+    </p>
+<img src="slap-cat.gif" alt="Error GIF" class="error-gif">
+    <br>
+    <a href="index.html" class="retry-btn">
+      Try again
+    </a>
+  </div>
+
+<div class="error-dialog" id="errorDialog">
+  <div class="win-header">
+    fuck-you.exe - System Error
+    <span class="win-close">✕</span>
+  </div>
+
+  <div class="win-body">
+    <div class="win-icon">❌</div>
+    <div class="win-text">
+      An unexpected error occured
+      <br><br>
+      <b>INVALID RESPONSE</b>
+    </div>
+  </div>
+
+  <div class="win-footer">
+    <button class="dialog-btn" id="okBtn">OK</button>
+  </div>
+</div>
+
+  <script>
+    
+ // floating ❌
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "&#128148;";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+// shake
+document.body.classList.add("shake");
+setTimeout(() => {
+  document.body.classList.remove("shake");
+}, 3200);
+
+// audio (DECLARE ONCE)
+const sound = document.getElementById("errorSound");
+sound.playbackRate = 1;
+sound.currentTime = 0.15;
+sound.play();
+
+setTimeout(() => {
+  sound.pause();
+  sound.currentTime = 0;
+}, 3200);
+
+let okClickCount = 0;
+let autoHideTimer; // keeps track of the 5s timer
+
+// show dialog (random position)
+setTimeout(() => {
+  showDialog();
+}, 700);
+
+function showDialog() {
+  const dialog = document.getElementById("errorDialog");
+
+  const x = Math.random() * (window.innerWidth - 300);
+  const y = Math.random() * (window.innerHeight - 200);
+
+  dialog.style.left = `${x}px`;
+  dialog.style.top = `${y}px`;
+  dialog.style.transform = "none";
+  dialog.style.display = "block";
+
+  // AUTO DISAPPEAR AFTER 5000ms
+  clearTimeout(autoHideTimer);
+  autoHideTimer = setTimeout(() => {
+    dialog.style.display = "none";
+  }, 3200);
+}
+
+// OK button logic
+document.querySelector(".dialog-btn").addEventListener("click", () => {
+  okClickCount++;
+
+  const dialog = document.getElementById("errorDialog");
+  dialog.style.display = "none";
+
+  // if clicked less than (1) times, bring it back
+  if (okClickCount < 1) {
+    setTimeout(() => {
+      showDialog();
+    }, 500);
+  }
+});
+
+// teleport dialog while visible
+setInterval(() => {
+  const dialog = document.getElementById("errorDialog");
+
+  if (dialog.style.display === "block") {
+    const x = Math.random() * (window.innerWidth - 300);
+    const y = Math.random() * (window.innerHeight - 200);
+    dialog.style.left = `${x}px`;
+    dialog.style.top = `${y}px`;
+  }
+}, 1000);
+
+  </script>
+
+</body>
+</html>

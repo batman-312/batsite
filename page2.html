@@ -1,0 +1,240 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>For You, My Love ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .page {
+      min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      transition: transform 0.3s ease, background 0.4s ease;
+  background: radial-gradient(
+    circle at top,
+
+    #a75858 0%,
+    #753b3b 65%,
+    #411818 100%
+  );
+  color: #f3e6dc;
+  position: relative;
+  overflow: hidden;
+    }
+
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.45)
+  );
+  opacity: 0.5;
+
+      transition: opacity 0.6s ease;
+      z-index: 1;
+}
+    .page:has(.love-button:hover)::before {
+      opacity: 0.75;
+      content: "";
+      position: absolute;
+      inset: 0;
+      
+      z-index: 1;
+    }
+
+    .page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    background: url("1.gif") center/cover no-repeat;
+    opacity: 0;
+
+    transition: opacity 0.6s ease;
+    z-index: 0;
+  }
+    .page:has(.love-button:hover)::after {
+      opacity: 0.4;
+}
+
+.page.gif-active::after {
+  opacity: 0.1;
+}
+
+  
+
+  .page:has(.love-button:hover) .text-box,
+.page:has(.love-button:hover) .text-box p {
+  color: #fff;
+}
+    .outer-box {
+      width: 90%;
+      max-width: 900px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .text-box {
+      padding: 40px;
+      margin-bottom: 40px;
+      font-size: 1.2rem;
+      color: #f1e3d6;
+       transition: color 0.4s ease;
+    }
+
+    .love-button {
+      display: inline-block;
+      padding: 12px 30px;
+      min-width: 130px;
+
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 30px;
+backdrop-filter: blur(4px);
+      font-size: 1rem;
+      font-weight: 400;
+      text-decoration: none;
+
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .love-button:hover {
+      background: #000;
+      color: #fff; 
+      transform: scale(1.1);
+    }
+
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+    .love-cluster {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.Goodgirl {
+  font-size: 4rem;
+  letter-spacing: 0.15rem;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.kiss {
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0.85;
+  font-family: "Apple Chancery", "Segoe Script", cursive;
+}
+
+.kiss-1 { top: -20px; left: -30px; transform: rotate(-12deg); }
+.kiss-2 { top: -10px; right: -35px; transform: rotate(15deg); }
+.kiss-3 { bottom: -18px; left: 50%; transform: translateX(-50%) rotate(-6deg); }
+
+.abc {
+position: absolute;
+  left: 34.5%;
+  bottom: 10%;
+      font-weight: 10;
+      letter-spacing: 0.1rem;
+      font-family: "Apple Chancery", "Segoe Script", cursive;
+}
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="outer-box">
+
+      <div class="text-box">
+        <div class="love-cluster">
+  <p class="Goodgirl">Good girl</p>
+  <p class="kiss kiss-1">*mwah*</p>
+  <p class="kiss kiss-2">*mwah*</p>
+  <p class="kiss kiss-3">*mwah*</p>
+</div>
+
+<br>
+      <a href="pg3/pg3.html" class="love-button">
+        For you, my love…
+      </a>
+      <br>
+      <p class="abc">
+        i made you something...
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 600);
+
+    const page = document.querySelector(".page");
+  const loveBtn = document.querySelector(".love-button");
+
+  if (page && loveBtn) {
+    const activateGif = () => {
+      page.classList.add("gif-active");
+      loveBtn.removeEventListener("mouseenter", activateGif);
+    };
+
+    loveBtn.addEventListener("mouseenter", activateGif);
+  }
+
+  </script>
+
+</body>
+</html>

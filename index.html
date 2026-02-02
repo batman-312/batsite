@@ -1,0 +1,218 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>For You, My Love ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="password/password.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+  background: radial-gradient(
+    circle at top,
+    /* #805656 0%,
+    #5a082e 55%,
+    #0f0b0a 100% */
+
+    #a75858 0%,
+    #753b3b 55%,
+    #411818 100%
+  );
+  color: #f3e6dc;
+}
+
+    section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 4.5rem;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+    .scroll {
+      margin-top: 40px;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+      /* Buttons */
+.buttons {
+  position: relative;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+    button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s ease;
+    }
+
+    .yes {
+      background: #b69c9444;
+      color: white;
+    }
+
+    .yes:hover {
+      transform: scale(1.1);
+    }
+
+    .no {
+      transition: transform 0.2s ease;
+      background: #ffffffab;
+      color: #342723;
+      position: absolute;
+      top: 60px;
+    }
+
+    .final {
+      display: none;
+    }
+.yes,
+.no {
+  min-width: 130px;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="password-screen">
+  <div class="password-box">
+    <h2>💙 Private Space</h2>
+    <p>Enter the password</p>
+    <input type="password" id="password-input" placeholder="••••••••">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="password-error"></p>
+  </div>
+</div>
+
+  <!-- SECTION 1 -->
+  <section>
+    <h1>❤️Hyyyyyy babyyyyyyyyy❤️</h1>
+    <p>
+    </p>
+    <div class="scroll">Scroll ↓</div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <h1>😽 Every Moment With You 😽</h1>
+    <center><p>
+      From our laughs to our late night talks,  <br>
+      from stupid fights to endless care...  
+      every moment with you <br>
+       means the world to me.
+    </p></center>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section>
+    <h1> 🤭 Will you be my Valentine? 🤭</h1>
+    <p></p>
+
+    <div class="buttons">
+      <button class="yes" onclick="goNext()">YES 🙈</button>
+      <button class="no" id="noBtn" onclick="goTryAgain()">NO 😢</button>
+    </div>
+  </section>
+
+
+  <script src="password/password.js"></script>
+  <script>
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }, 600);
+
+    // NO button runs away
+    const noBtn = document.getElementById('noBtn');
+   noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100 + 60;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+
+    // YES clicked
+    function goNext() {
+    window.location.href = "page2.html";
+  }
+function goTryAgain() {
+  window.location.href = "tryagain.html";
+}
+  </script>
+
+</body>
+</html>
