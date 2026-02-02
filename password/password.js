@@ -1,27 +1,26 @@
-const SITE_PASSWORD = "PV=nRT"; 
+const SITE_PASSWORD = "PV=nRT";
 
-function checkPassword() {
-  const input = document.getElementById("password-input").value;
-  const error = document.getElementById("password-error");
+document.addEventListener("DOMContentLoaded", () => {
+  const screen = document.getElementById("password-screen");
+  const input  = document.getElementById("password-input");
+  const error  = document.getElementById("password-error");
 
-  if (input === SITE_PASSWORD) {
-    document.getElementById("password-screen").style.display = "none";
-  } else {
-    error.textContent = "Wrong password 💔";
+  if (localStorage.getItem("siteUnlocked") === "yes") {
+    screen.style.display = "none";
   }
-}
-if (localStorage.getItem("siteUnlocked") === "yes") {
-  document.getElementById("password-screen").style.display = "none";
-}
 
-function checkPassword() {
-  const input = document.getElementById("password-input").value;
-  const error = document.getElementById("password-error");
+  window.checkPassword = function () {
+    if (input.value === SITE_PASSWORD) {
+      localStorage.setItem("siteUnlocked", "yes");
+      screen.style.display = "none";
+    } else {
+      error.textContent = "Wrong password 💔";
+    }
+  };
 
-  if (input === SITE_PASSWORD) {
-    localStorage.setItem("siteUnlocked", "yes");
-    document.getElementById("password-screen").style.display = "none";
-  } else {
-    error.textContent = "Wrong password 💔";
-  }
-}
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      checkPassword();
+    }
+  });
+});
