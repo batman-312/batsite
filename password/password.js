@@ -1,4 +1,4 @@
-const SITE_PASSWORD = "PV=nRT"; // <-- change this
+const SITE_PASSWORD = "PV=nRT"; 
 
 function checkPassword() {
   const input = document.getElementById("password-input").value;
