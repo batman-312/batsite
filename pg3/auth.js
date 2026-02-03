@@ -1,6 +1,6 @@
 const CORRECT_PASSWORD = "yourpassword";
 
-// Auto-redirect if already remembered
+// Auto-login
 if (localStorage.getItem("pg3Access") === "true") {
   window.location.href = "pg3.html";
 }
